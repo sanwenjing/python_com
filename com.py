@@ -21,7 +21,7 @@ def getAddrStr(address):
       if getSystemClass()=="Windows":
             return address.replace("\/","\\");
       else:
-            return address.replace("\\","\/");
+            return address.replace("\\","/");
 def getTime():
       return getTimeFormat('%Y-%m-%d %H:%M:%S');
 def getTimeFormat(format):
@@ -37,5 +37,5 @@ def getSystemClass():
 if __name__=="__main__":
          print(getFileName());
          log1=log();
-         print(log1.getFd());
+         print(log1.getFd().replace("\\","/"));
          #log1.w("test");
