@@ -18,9 +18,10 @@ class log:
             of.close();
             return;
 def getTime():
+      return getTimeFormat('%Y-%m-%d %H:%M:%S');
+def getTimeFormat(format):
       now=dt.datetime.now();
-      return now.strftime('%Y-%m-%d %H:%M:%S');
-
+      return now.strftime(format);
 	
 def getFileName():
     fn=sys.argv[0][sys.argv[0].rfind(os.sep) + 1:];
