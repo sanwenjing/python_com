@@ -30,4 +30,4 @@ if __name__=="__main__":
          print(getFileName());
          log1=log();
          print(log1.getFd());
-         log1.w("test");
+         #log1.w("test");
