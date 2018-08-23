@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import os,sys;
+import os,sys,time;
 import datetime as dt;
 import platform as pf;
 class log:
@@ -27,7 +27,8 @@ def getTime():
 def getTimeFormat(format):
       now=dt.datetime.now();
       return now.strftime(format);
-	
+def sleep(seconds):#延时程序
+      time.sleep(seconds);
 def getFileName():
     fn=sys.argv[0][sys.argv[0].rfind(os.sep) + 1:];
     return fn.split(".")[0];
@@ -39,3 +40,4 @@ if __name__=="__main__":
          log1=log();
          print("//\\".replace("/","\\"));
          #log1.w("test");
+         sleep(1);
