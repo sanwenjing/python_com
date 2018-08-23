@@ -35,9 +35,12 @@ def getFileName():
 
 def getSystemClass():
       return pf.system();
+
+def killByKw(keyword):#命令行关键字终结程序
+      os.system("ps -ef|grep "+keyword+" |awk '{print $2}'|xargs kill -9");
 if __name__=="__main__":
          print(getFileName());
          log1=log();
          print("//\\".replace("/","\\"));
          #log1.w("test");
-         sleep(1);
+         
