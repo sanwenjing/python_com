@@ -5,7 +5,8 @@ import os,sys;
 import com;
 def online():
     rt=0
-    cmd=os.popen("netstat -anpt|grep ssh|grep :9527");
+    #cmd=os.popen("netstat -anpt|grep ssh|grep :22");
+	cmd=os.popen("ps -ef|grep -v grep|grep qngfCNTR");
     print("online:");
     while 1:
             rusult=cmd.readline()
