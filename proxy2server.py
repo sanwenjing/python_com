@@ -6,7 +6,7 @@ import com;
 def online():
     rt=0
     #cmd=os.popen("netstat -anpt|grep ssh|grep :22");
-	cmd=os.popen("ps -ef|grep -v grep|grep qngfCNTR");
+    cmd=os.popen("ps -ef|grep -v grep|grep qngfCNTR");
     print("online:");
     while 1:
             rusult=cmd.readline()
@@ -22,7 +22,7 @@ def online():
 def connect():
     log=com.log();
     log.w("Executed!!!");
-    tl=open("/root/tasklist");
+    tl=open("/usr/program/sshproxy/tasklist");
     print("Connecting:");
     while 1:
         line=tl.readline();
