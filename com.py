@@ -38,9 +38,19 @@ def getSystemClass():
 
 def killByKw(keyword):#命令行关键字终结程序
       os.system("ps -ef|grep "+keyword+" |awk '{print $2}'|xargs kill -9");
+def getHtml(url):#取HTML代码,利用CURL
+    html=os.popen("curl "+url)
+    htmltxt=""
+    while 1:
+        line=html.readline()
+        if line:
+            htmltxt+=line
+        else:
+            break
+    return htmltxt
 if __name__=="__main__":
          print(getFileName());
          log1=log();
          print("//\\".replace("/","\\"));
          #log1.w("test");
-         
+         print getHtml("www.baidu.com")         
