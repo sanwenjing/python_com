@@ -18,8 +18,8 @@ class log:
             of.close();
             return;
 def getArgs(position):
-    if(len(sys.argv)>=position):
-        return sys.argv[position-1];
+    if(len(sys.argv)>=position+1):
+        return sys.argv[position];
     else:
         return "";
 def getAddrStr(address):
@@ -56,7 +56,7 @@ def getHtml(url):#取HTML代码,利用CURL
 if __name__=="__main__":
          print(getFileName());
          log1=log();
-         print getArgs(1);
+         print getArgs(0);
          print("//\\".replace("/","\\"));
          #log1.w("test");
          #print getHtml("www.baidu.com")         
