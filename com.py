@@ -17,6 +17,11 @@ class log:
             of.write(getTime()+"  "+text+"\r\n");
             of.close();
             return;
+def getArgs(position):
+    if(len(sys.argv)>=position):
+        return sys.argv[position-1];
+    else:
+        return "";
 def getAddrStr(address):
       if getSystemClass()=="Windows":
             return address.replace("/","\\");
@@ -51,6 +56,7 @@ def getHtml(url):#取HTML代码,利用CURL
 if __name__=="__main__":
          print(getFileName());
          log1=log();
+         print getArgs(1);
          print("//\\".replace("/","\\"));
          #log1.w("test");
-         print getHtml("www.baidu.com")         
+         #print getHtml("www.baidu.com")         
