@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-#SSH反向代理守护脚本,命令存储在/root/tasklist文件中
+#SSH反向代理守护脚本,命令存储在tasklist文件中
 import os,sys;
 import com;
 def online():
@@ -22,13 +22,15 @@ def online():
 def connect():
     log=com.log();
     log.w("Executed!!!");
-    tl=open("/usr/program/sshproxy/tasklist");
+    tl=open(com.getRunPath()+"/tasklist");
     print("Connecting:");
     while 1:
         line=tl.readline();
         if line:
-            print(line.replace("\n",""));
-            os.system(line);
+            line.replace("\n","");
+            if line.find("#")<0:
+                os.system(line);
+                print line;
         else:
             tl.close();
             online();
