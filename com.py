@@ -6,10 +6,11 @@ import platform as pf;
 class log:
       fd="";
       def __init__(self,fileaddr=""):
+            filepath=getArgs(0);
             if(fileaddr):
                   self.fd=fileaddr;
             else:
-                  self.fd=getAddrStr(os.getcwd()+"\\"+ getFileName()+".log");
+                  self.fd=getRunPath()+"/"+getFileName()+".log";
       def getFd(self):
             return(self.fd);
       def w(self,text):
@@ -40,7 +41,18 @@ def getFileName():
 
 def getSystemClass():
       return pf.system();
-
+def getRunPath():
+    curPath=getArgs(0);
+    if curPath[0]!="/":
+        return getLeft(os.getcwd()+"/"+ curPath,"/");
+    else:
+        return getLeft(curPath,"/");
+def getLeft(string,keyword):
+    keyposition=string.rfind(keyword)
+    if keyposition>=0:
+        return string[0:keyposition];
+    else:
+        return string;
 def killByKw(keyword):#命令行关键字终结程序
       os.system("ps -ef|grep "+keyword+" |awk '{print $2}'|xargs kill -9");
 def getHtml(url):#取HTML代码,利用CURL
@@ -54,9 +66,10 @@ def getHtml(url):#取HTML代码,利用CURL
             break
     return htmltxt
 if __name__=="__main__":
-         print(getFileName());
          log1=log();
-         print getArgs(0);
+         print log1.getFd();
+         print getLeft("234234fffssf","/");
          print("//\\".replace("/","\\"));
+         print getRunPath();
          #log1.w("test");
          #print getHtml("www.baidu.com")         
