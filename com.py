@@ -33,6 +33,8 @@ def getTime():
 def getTimeFormat(format):
       now=dt.datetime.now();
       return now.strftime(format);
+def getHM():
+    return getTimeFormat("%H:%M");
 def sleep(seconds):#延时程序
       time.sleep(seconds);
 def getFileName():
@@ -71,5 +73,6 @@ if __name__=="__main__":
          print getLeft("234234fffssf","/");
          print("//\\".replace("/","\\"));
          print getRunPath();
+         print getHM();
          #log1.w("test");
          #print getHtml("www.baidu.com")         
