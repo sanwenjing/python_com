@@ -68,7 +68,7 @@ def getHtml(url):#取HTML代码,利用CURL
             break
     return htmltxt
 def isrun(keyword):#判断运行状态
-    rs=os.popen("ps -ef |grep "+keyword+"|grep -v grep")
+    rs=os.popen("ps -ef |grep '"+keyword+"'|grep -v grep")
     if rs.readline():
         return 1
     else:

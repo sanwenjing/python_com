@@ -10,7 +10,7 @@ def checkOL():
     tasklist=open(cpath+"/tasklist")
     task=tasklist.readline().replace("\n","");
     while task:
-        kw=task.split(" ")[2]
+        kw=" ".join(task.split(" ")[2:])
         #print kw
         if(com.isrun(kw)):
             print "running:"+task
