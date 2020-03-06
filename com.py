@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import os,sys,time;
+import os,sys,time,random;
 import datetime as dt;
 import platform as pf;
 class log:
@@ -73,6 +73,39 @@ def isrun(keyword):#判断运行状态
         return 1
     else:
         return 0
+        
+#For adb to get multi devices id
+def getDevID():
+  r=os.popen("adb devices |findstr /V devices")
+  #text=r.read()
+  #print text
+  output=[]
+  while 1:
+    line=r.readline()
+    if not line:
+      break
+    res=getLeft(line,"device").rstrip()
+    #Exit if nothing
+    if len(res)==0:
+      break
+    #print res
+    #swipe(res)
+    output.append(res)
+  r.close()
+  return output
+  
+#send a adb command for swiping
+def swipe(DevID):
+  x1=291+random.randint(1,100)
+  y1=726+random.randint(-50,50)
+  x2=291+random.randint(1,100)
+  y2=243+random.randint(-50,50)
+  #sleepTime=random.randint(1,5)
+  #time.sleep(sleepTime)
+  cmdline="adb -s {dev} shell input swipe {x1} {y1} {x2} {y2} 200".format(dev=DevID,x1=x1,y1=y1,x2=x2,y2=y2)
+  os.system(cmdline)
+  #print cmdline
+
 if __name__=="__main__":
          log1=log();
          print log1.getFd();
