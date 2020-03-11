@@ -76,7 +76,10 @@ def isrun(keyword):#判断运行状态
         
 #For adb to get multi devices id
 def getDevID():
-  r=os.popen("adb devices |findstr /V devices")
+  if getSystemClass()=="Windows":
+    r=os.popen("adb devices |findstr /V devices")
+  else:
+    r=os.popen("adb devices |grep -v devices")
   #text=r.read()
   #print text
   output=[]
@@ -113,5 +116,8 @@ if __name__=="__main__":
          print("//\\".replace("/","\\"));
          print getRunPath();
          print getHM();
+         print getSystemClass()
+         if getSystemClass()=="Windows":
+            print "win"
          #log1.w("test");
          #print getHtml("www.baidu.com")         
