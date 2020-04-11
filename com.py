@@ -109,6 +109,23 @@ def swipe(DevID):
   os.system(cmdline)
   #print cmdline
 
+#run cmd bg
+def bgrun(cmd):
+  cmdline="nohup {cmd}>/dev/null 2>&1 &".format(cmd=cmd)
+  print cmdline
+  os.system(cmdline)
+
+def isrun(progName):
+  r=os.popen("ps -ef|grep {kw}|wc -l".format(kw=progName))
+  res=r.readline()
+  r.close()
+#  print res
+#  print int(res)
+  if int(res)>2:
+    return True
+  else:
+    return False
+
 if __name__=="__main__":
          log1=log();
          print log1.getFd();
