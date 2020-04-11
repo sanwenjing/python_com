@@ -11,6 +11,7 @@ if __name__=="__main__":
 #  print com.isrun("frpc_linux_arm")
             progName="frpc_linux_arm"
             cmdline="/usr/program/sshproxy/frp/frpc_linux_arm -c /usr/program/sshproxy/frp/frpc.ini"
+            log1=com.log("/usr/program/sshproxy/frp/frp.log")
             if(len(sys.argv)>=2):
                 cmd=com.getArgs(1);
                 if(cmd=="stop"):
@@ -23,6 +24,7 @@ if __name__=="__main__":
                 elif(cmd=="start"):
                     if not com.isrun(progName):
                       com.bgrun(cmdline)
+                      log1.w("frp started!")
 
 
 
