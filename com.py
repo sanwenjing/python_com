@@ -126,6 +126,13 @@ def isrun(progName):
   else:
     return False
 
+def utf8ToGbk(text):
+  return text.decode("utf-8").encode("gbk")
+
+def gbkToUtf8(text):
+  return text.decode("gbk").encode("utf-8")
+
+
 if __name__=="__main__":
          log1=log();
          print log1.getFd();
