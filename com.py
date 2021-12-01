@@ -3,6 +3,10 @@
 import os,sys,time,random;
 import datetime as dt;
 import platform as pf;
+import ConfigParser  #ini
+
+
+
 class log:
       fd="";
       def __init__(self,fileaddr=""):
@@ -132,16 +136,32 @@ def utf8ToGbk(text):
 def gbkToUtf8(text):
   return text.decode("gbk").encode("utf-8")
 
+class Config:
+    def __init__(self, path=os.path.join(os.path.dirname(os.path.realpath(__file__)),getFileName()+".ini")):
+        self.path = path
+        self.cf = ConfigParser.ConfigParser()
+        self.cf.read(self.path)
+    def get(self,key,field="system"):
+        result = ""
+        try:
+            result = self.cf.get(field, key)
+        except:
+            result = ""
+        return result
+    def set(self,key,value,field="system"):
+        try:
+          self.cf.add_section(field)
+        except:
+          pass
+        self.cf.set(field, key, value)
+        self.cf.write(open(self.path,'w'))
+
 
 if __name__=="__main__":
-         log1=log();
-         print log1.getFd();
-         print getLeft("234234fffssf","/");
-         print("//\\".replace("/","\\"));
-         print getRunPath();
-         print getHM();
-         print getSystemClass()
-         if getSystemClass()=="Windows":
-            print "win"
+         #log1=log();
          #log1.w("test");
+         conf1=Config();
+         #print conf1.getFd();
+         conf1.set("test","123456nihao")
+         print conf1.get("test")
          #print getHtml("www.baidu.com")         
